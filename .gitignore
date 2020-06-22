@@ -1,2 +1,8 @@
 # venv 폴더 깃 업로드 무시하기
 django2.2/
+
+# build & object file
+*.py[cod]
+
+# database
+*.sqlite3
