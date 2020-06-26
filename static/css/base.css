@@ -1,0 +1,22 @@
+.nav_home {
+  color: #00827F !important;
+  font-weight: bolder;
+}
+
+.footer_style {
+  background-color: #00827F !important;
+}
+
+.footer_text {
+  color: white;
+  font-weight: bold;
+}
+
+.nav-up {
+  top: -40px;
+  transition: top 0.8s ease-in-out;
+}
+
+.nav-down {
+  transition: top 0.8s ease-in-out;
+}
