@@ -1,10 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&display=swap');
+
+:root {
+  --var-teal-green: #00827F;
+}
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 .nav_home {
-  color: #00827F !important;
+  color: var(--var-teal-green) !important;
   font-weight: bolder;
 }
 
 .footer_style {
-  background-color: #00827F !important;
+  background-color: var(--var-teal-green) !important;
 }
 
 .footer_text {
@@ -20,3 +30,60 @@
 .nav-down {
   transition: top 0.8s ease-in-out;
 }
+
+
+/* card start */
+.card {
+  border: 1px solid #000;
+  width:25%;
+  display: inline-block !important;
+  float: left;
+  box-sizing: border-box;
+}
+
+.card .card__image {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
+.card .card__image img{
+  width: 100%;
+  height: auto;
+}
+
+.card .card__image .card__badge{
+  position: absolute;
+  background-color: var(--var-teal-green);
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+.card .card__image .card__badge.card__badge--square{
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  border-radius: 10%;
+}
+
+.card .card__image .card__badge.card__badge--round{
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 100%;
+}
+
+.card .card__title h1 {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.card .card__content{
+
+}
+
+/* card end */
