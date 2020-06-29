@@ -5,4 +5,5 @@ app_name = 'club'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('generator/', views.fake_generator, name='generator'),
 ]
