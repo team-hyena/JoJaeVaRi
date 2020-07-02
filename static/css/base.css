@@ -23,7 +23,7 @@ body{
 }
 
 .nav-up {
-  top: -40px;
+  top: -60px;
   transition: top 0.8s ease-in-out;
 }
 
