@@ -33,29 +33,29 @@ def detail(req, club_id):
 from faker import Faker
 from faker.providers import internet
 
+from datetime import datetime
+from django.utils import timezone
+
 def fake_generator(req):
 
-    Club.objects.all().delete()
+    if Club.objects.all().count() > 0:
+        Club.objects.all().delete()
 
     faker = Faker(['ko_KR', 'en_US', 'en_GB', 'es_ES'])
 
     rep = faker.pyint(0, 100)
 
     for _ in range(rep):
-        club = Club()
-        club.name = faker.name()
-        club.title = faker.color()
-        club.description = faker.paragraph()
-        
-        club.location = faker.street_address()
-        club.period = faker.pyint(0, 10)
-        club.start_time = faker.date()
+
+        _date_time = faker.date_time()
+        v = datetime.strptime(_date_time)
+        print("datetime: ", _date_time, type(_date_time))
 
         _min = faker.pyint(1, 10)
         _step = faker.pyint(1, 10)
         _max = faker.pyint(_min + _step, 30)
 
-        club.min_participant_num = _min
-        club.max_participant_num = _max
+        club = Club(name = faker.name(), title = faker.color(), description = faker.paragraph(), location = faker.street_address(), period = faker.pyint(0, 10), start_time = timezone.make_aware(v), min_participant_num = _min, max_participant_num = _max)
+        club.save()
 
     return redirect('club:index')
