@@ -9,7 +9,7 @@ class Club(models.Model):
     description = models.TextField(blank=True)
 
     location = models.CharField(max_length=50)
-    period = models.DateField(max_length=50)
+    period = models.IntegerField(validators=[MinValueValidator(0)])
     start_time = models.DateTimeField()
     min_participant_num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
     max_participant_num = models.IntegerField()

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Club
+from .forms import MakeClubForm
 # Create your views here.
 
 def index(req):
@@ -20,6 +21,20 @@ def index(req):
     }
 
     return render(req, 'club/index.html', context)
+
+def make(req):
+    form = MakeClubForm()
+    return render(req, 'club/make.html', {'form': form})
+
+def add(req):
+    club = Club(req)
+    form = MakeClubForm(req.POST)
+
+    if form.is_valid():
+        _data = form.cleaned_data
+        club.add(title=_data['title'], name=_data['name'], description=_data['description'])
+
+    return redirect('club:index')
 
 def detail(req, club_id):
     club = get_object_or_404(Club, id=club_id)
