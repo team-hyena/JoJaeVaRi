@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-import os
+import os, json
+import pymysql
+from django.core.exceptions import ImproperlyConfigured
+# pymysql.version_info = (1, 3, 13, "final", 0)
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -46,6 +50,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.naver',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -87,7 +93,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
+        # 'default':{
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'OPTIONS': {
+        #     'read_default_file' : 'secrets/mysql.cnf',
+        # },
+    }
 
 
 # Password validation
@@ -142,4 +153,5 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'

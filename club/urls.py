@@ -8,5 +8,5 @@ urlpatterns = [
     path('add/', views.add, name='add'),
     path('make/', views.make, name='make'),
     path('<int:club_id>/', views.detail, name='detail'),
-    path('generator/', views.fake_generator, name='generator'),
+    path('generator/', views.fake_generator, name='generator')
 ]
