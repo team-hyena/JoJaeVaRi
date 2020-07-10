@@ -7,17 +7,17 @@ from .forms import MakeClubForm
 def index(req):
     club = Club.objects.all()
 
-    club_list = []
+    # club_list = []
 
-    for club_item in club:
-        club_list.append({
-            'thumbnail_url': club_item.thumbnail_url,
-            'title': club_item.title,
-            'description': club_item.description,
-        })
+    # for club_item in club:
+    #     club_list.append({
+    #         'thumbnail_url': club_item.thumbnail_url,
+    #         'title': club_item.title,
+    #         'description': club_item.description,
+    #     })
 
     context = {
-        'club_list': club_list,
+        'club_list': club,
     }
 
     return render(req, 'club/index.html', context)
@@ -62,15 +62,16 @@ def fake_generator(req):
 
     for _ in range(rep):
 
-        _date_time = faker.date_time()
-        v = datetime.strptime(_date_time)
-        print("datetime: ", _date_time, type(_date_time))
+        _d = faker.date_time()
+        print(_d)
 
         _min = faker.pyint(1, 10)
         _step = faker.pyint(1, 10)
         _max = faker.pyint(_min + _step, 30)
 
-        club = Club(name = faker.name(), title = faker.color(), description = faker.paragraph(), location = faker.street_address(), period = faker.pyint(0, 10), start_time = timezone.make_aware(v), min_participant_num = _min, max_participant_num = _max)
+        club = Club(name = faker.language_name(), title = faker.color_name(), description = faker.paragraph(), location = faker.street_address(), period = faker.pyint(0, 10), start_time = timezone.make_aware(_d), min_participant_num = _min, max_participant_num = _max)
         club.save()
+
+    
 
     return redirect('club:index')

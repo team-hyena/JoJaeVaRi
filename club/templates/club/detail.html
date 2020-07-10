@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-    {{ club }}
+    <h1>{{ club.title }}</h1>
+
+    <p>{{ club.name }}</p>
+
+    <p>{{ club.description }}</p>
+
+    <p>{{ club.location }}</p>
 {% endblock %}
