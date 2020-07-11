@@ -1,0 +1,53 @@
+.box {
+  border: 1px black solid;
+}
+@media (max-width: 768px) {
+  h1{
+      color: lightseagreen
+  }
+  .bottom_panel {
+      background-color: skyblue;
+      position: sticky;
+      bottom: 0rem;
+  }
+  .div_panel {
+      display: none;
+  }
+}
+@media (min-width: 768px){
+  h1 {
+      color: pink;
+  }
+
+  .float_panel {
+      float: right; 
+      clear: none;
+      height: 250px;
+      width: 350px;
+      margin: 0px 0.5rem;
+      position: sticky;
+      top: 6rem;
+      right: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      /* position: absolute;
+      right: 100px;
+      top: 100px */
+      
+  }
+
+  .row {
+      display: flex;
+      flex-direction: row-reverse;
+  }
+
+  .bottom_panel {
+      display: none;
+  }
+
+  .div_panel {
+      background-color: skyblue;
+      display: block;
+  }
+}

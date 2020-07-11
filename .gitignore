@@ -2,6 +2,8 @@
 django2.2/
 venv/
 .vscode/*
+.idea/*
+
 # build & object file
 *.py[cod]
 

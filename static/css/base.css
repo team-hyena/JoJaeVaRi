@@ -2,6 +2,7 @@
 
 :root {
   --var-teal-green: #00827F;
+  --var-radius-size: 13px;
 }
 
 body{
@@ -53,10 +54,14 @@ Extra large devices (large laptops and desktops, 1200px and up)
 @media only screen and (min-width: 1200px) {...} */
 .card {
   width:100%;
-  border: 1px solid #000;
   display: inline-block !important;
   float: left;
   box-sizing: border-box;
+  margin: 15px;
+  border-radius: var(--var-radius-size);
+  background: #ffffff;
+  box-shadow:  14px 14px 28px #cfcfcf, 
+               -14px -14px 28px #ffffff;
 }
 
 .card .card__image {
@@ -65,18 +70,23 @@ Extra large devices (large laptops and desktops, 1200px and up)
   display: inline-block;
 }
 
-.card .card__image img{
-  /* width: 100%;
-  height: auto; */
+
+.card .card__content{
+  padding: 10px;  
+
+}
+.card .card__image img{  
   display: block;
   background-color: #eee;
   width: 100%;
-  height:100px;
+  height: auto;
+  border-top-left-radius: var(--var-radius-size);
+  border-top-right-radius: var(--var-radius-size);
 }
 
 .card .card__image .card__badge{
   position: absolute;
-  background-color: var(--var-teal-green);
+
   font-size: 13px;
   color: #ffffff;
   font-weight: bold;
@@ -84,29 +94,25 @@ Extra large devices (large laptops and desktops, 1200px and up)
 }
 
 .card .card__image .card__badge.card__badge--square{
-  bottom: 0;
-  left: 0;
+  top: 10px;
+  left: 10px;
   text-align: center;
   border-radius: 10%;
   display: inline-block;
+  background-color: var(--var-teal-green);
 }
 
 .card .card__image .card__badge.card__badge--round{
   top: 10px;
   right: 10px;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  border-radius: 100%;
 }
 
 .card .card__title h1 {
   font-weight: 700;
   font-size: 24px;
-}
-
-.card .card__content{
-
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* card end */
