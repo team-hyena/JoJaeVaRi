@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-    <img src="{{ club.thumbnail_url }}" alt="club thumbnail"/>
-    {{ club.title }}
-    {{ club.description}}
+    {% for club in club_list %}
+    <div class="club-item">
+        <img src="{{ club.thumbnail_url }}" alt=""/>
+        <a href="{% url 'club:detail' club.id %}">{{ club.title }}</a>
+        <p>{{ club.name }}</p>
+        <p>{{ club.description }}</p>
+    </div>
+    {% endfor %}
 {% endblock %}
