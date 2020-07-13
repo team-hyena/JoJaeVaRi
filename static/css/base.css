@@ -53,10 +53,17 @@ Small devices (portrait tablets and large phones, 600px and up)
 
 Extra large devices (large laptops and desktops, 1200px and up)
 @media only screen and (min-width: 1200px) {...} */
+.card-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: stretch;
+}
+
 .card {
-  width:100%;
-  display: inline-block !important;
-  float: left;
+  min-width: 300px;
+  flex: 1;
   box-sizing: border-box;
   margin: 15px;
   border-radius: var(--var-radius-size);
@@ -106,6 +113,7 @@ Extra large devices (large laptops and desktops, 1200px and up)
 .card .card__image .card__badge.card__badge--round{
   top: 10px;
   right: 10px;
+  cursor: pointer;
 }
 
 .card .card__title h1 {
