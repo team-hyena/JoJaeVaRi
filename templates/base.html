@@ -19,11 +19,11 @@
 <body>
     {% include "_navbar.html" %}
     <div class="container">
-        <!-- {% block content %}
-        {% endblock %} -->
+        {% block content %}
+        {% endblock %}
     </div>
     
-    <div class="container">
+    {% comment %} <div class="container">
         <div  class="row">
             {% for i in "x"|rjust:"10" %}            
                 <div class="col-12 col-sm-6 col-md-3">
@@ -31,7 +31,7 @@
                 </div>            
             {% endfor %}
         </div>
-    </div>
+    </div> {% endcomment %}
 
     <footer class="footer_style mt-auto py-3 fixed-bottom btn">
         <div class="footer_text text-center"> 버튼으로 쓸 예정. </div>

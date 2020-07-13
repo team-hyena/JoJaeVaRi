@@ -69,9 +69,7 @@ def fake_generator(req):
         _step = faker.pyint(1, 10)
         _max = faker.pyint(_min + _step, 30)
 
-        club = Club(name = faker.language_name(), title = faker.color_name(), description = faker.paragraph(), location = faker.street_address(), period = faker.pyint(0, 10), start_time = timezone.make_aware(_d), min_participant_num = _min, max_participant_num = _max)
+        club = Club(thumbnail_url = f'https://placeimg.com/480/270/any/{faker.pyint(1)}',name = faker.language_name(), title = faker.color_name(), description = faker.paragraph(), location = faker.street_address(), period = faker.pyint(0, 10), start_time = timezone.make_aware(_d), min_participant_num = _min, max_participant_num = _max)
         club.save()
-
-    
 
     return redirect('club:index')
