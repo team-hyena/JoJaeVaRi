@@ -12,3 +12,18 @@ window.onscroll = function (e) {
   }
   this.oldScroll = this.scrollY;
 }
+
+
+var hearts = document.querySelectorAll('.badge-heart');
+
+hearts.forEach(function(o, i) {
+  o.addEventListener('click', function(event) {
+    var filled = this.getAttribute("data-filled") === "true";
+    var filled_id = this.getAttribute("data-filled-id");
+    var another = document.querySelector('[data-filled-id="'+filled_id+'"][data-filled="'+(!filled)+'"]');
+
+    this.style.display = "none";
+    another.style.display="block";
+    event.preventDefault();
+  });
+});
