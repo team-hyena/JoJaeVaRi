@@ -1,12 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <h1>{{ club.title }}</h1>
+    <link rel="stylesheet" type="text/css" href="{% static 'club/detail.css' %}">
+    <div class="row-box">
+        <div>
+            <div class="float_panel box" style="background-color: lightgreen;">
+                <img src="{{ club.thumbnail_url}}" alt="background img"/>
+                <div class="div_panel">
+                    <div>
+                        일시: {{ club.start_time }}
+                    </div>
+                    <div>
+                        장소: {{ club.location }}
+                    </div>
+                    <div class="heart">하트</div>
+                    <div class="btn btn-primary w-100">1 자리 남았어요! 지금 시작</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h1>{{ club.title }}</h1>
+            <article>
+                <p>{{ club.description }}</p>
+                <p>{{ club.name }}</p>
+                <p>{{ club.location }}</p>
+            </article>
+        </div>
+        <div class="bottom_panel btn btn-primary w-100">
+            <div class="heart">하트</div>
+            <div>1 자리 남았어요! 지금 시작</div>
+        </div>
+    </div>
 
-    <img src="{{ club.thumbnail_url}}"/>
-
-    <p>{{ club.name }}</p>
-
-    <p>{{ club.description }}</p>
-
-    <p>{{ club.location }}</p>
 {% endblock %}

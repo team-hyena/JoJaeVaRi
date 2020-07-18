@@ -3,6 +3,7 @@ django2.2/
 venv/
 .vscode/*
 .idea/*
+config/__pycache__/
 
 # build & object file
 *.py[cod]
@@ -18,7 +19,7 @@ venv/
 *.log
 *.pot
 *.pyc
-__pycache__/
+**/__pycache__/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
