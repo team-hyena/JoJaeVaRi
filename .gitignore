@@ -3,6 +3,7 @@ django2.2/
 venv/
 .vscode/*
 .idea/*
+config/__pycache__/
 
 # build & object file
 *.py[cod]
