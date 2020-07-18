@@ -5,7 +5,6 @@ from django_summernote import fields as summer_fields
 from .models import SummerNote
 from django import forms
 
-
 class MakeClubForm(forms.ModelForm):
     # name = forms.CharField(label='모임 이름을 입력하세요')
     # title = forms.CharField(label='모임 주제를 입력하세요')

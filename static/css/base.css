@@ -1,10 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&display=swap');
+
+:root {
+  --var-teal-green: #00827F;
+  --var-radius-size: 13px;
+}
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-bottom: 100px;
+}
+
 .nav_home {
-  color: #00827F !important;
+  color: var(--var-teal-green) !important;
   font-weight: bolder;
 }
 
 .footer_style {
-  background-color: #00827F !important;
+  background-color: var(--var-teal-green) !important;
 }
 
 .footer_text {
@@ -13,10 +25,103 @@
 }
 
 .nav-up {
-  top: -40px;
+  top: -60px;
   transition: top 0.8s ease-in-out;
 }
 
 .nav-down {
   transition: top 0.8s ease-in-out;
 }
+
+
+/* card start */
+/* Extra small devices (phones, 600px and down)
+@media only screen and (max-width: 600px) {...}
+
+Small devices (portrait tablets and large phones, 600px and up)
+@media only screen and (min-width: 600px) {...} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 575px) {
+  .card .card__image .card__badge.card__badge--square {
+    display: none !important;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up)
+@media only screen and (min-width: 992px) {...}
+
+Extra large devices (large laptops and desktops, 1200px and up)
+@media only screen and (min-width: 1200px) {...} */
+.card-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: stretch;
+}
+
+.card {
+  min-width: 300px;
+  flex: 1;
+  box-sizing: border-box;
+  margin: 15px;
+  border-radius: var(--var-radius-size);
+  background: #ffffff;
+  box-shadow:  14px 14px 28px #cfcfcf, 
+               -14px -14px 28px #ffffff;
+}
+
+.card .card__image {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
+
+.card .card__content{
+  padding: 10px;  
+
+}
+.card .card__image img{  
+  display: block;
+  background-color: #eee;
+  width: 100%;
+  height: auto;
+  border-top-left-radius: var(--var-radius-size);
+  border-top-right-radius: var(--var-radius-size);
+}
+
+.card .card__image .card__badge{
+  position: absolute;
+
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+.card .card__image .card__badge.card__badge--square{
+  top: 10px;
+  left: 10px;
+  text-align: center;
+  border-radius: 10%;
+  display: inline-block;
+  background-color: var(--var-teal-green);
+}
+
+.card .card__image .card__badge.card__badge--round{
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.card .card__title h1 {
+  font-weight: 700;
+  font-size: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* card end */

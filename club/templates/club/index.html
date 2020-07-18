@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-    <img src="{{ club.thumbnail_url }}" alt="club thumbnail"/>
-    {{ club.title }}
-    {{ club.description}}
+    <div class="card-container">
+        {% for club in club_list %}            
+            {% include "club/_card.html" with club=club %}
+        {% endfor %}
+    </div>
 {% endblock %}

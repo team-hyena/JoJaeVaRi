@@ -36,7 +36,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'default',
-
+    'accounts',
     'club',
     'django.contrib.admin',
     'django.contrib.auth',
