@@ -23,18 +23,18 @@ def index(req):
     return render(req, 'club/index.html', context)
 
 def make(req):
-    form = MakeClubForm()
-    return render(req, 'club/make.html', {'form': form})
+    if req.method == 'POST':
+        # club = Club(req)
+        form = MakeClubForm(req.POST)
 
-def add(req):
-    club = Club(req)
-    form = MakeClubForm(req.POST)
-
-    if form.is_valid():
-        _data = form.cleaned_data
-        club.add(title=_data['title'], name=_data['name'], description=_data['description'])
-
-    return redirect('club:index')
+        if form.is_valid():
+            _data = form.cleaned_data
+            club = Club(thumbnail_url=_data['thumbnail_url'], title=_data['title'], name=_data['name'], description=_data['description'], location = _data['location'], period = _data['period'], start_time = _data['start_time'], min_participant_num = _data['min_participant_num'], max_participant_num = _data['max_participant_num'])
+            club.save()
+        return redirect('club:index')
+    else:
+        form = MakeClubForm()
+        return render(req, 'club/make.html', {'form': form})
 
 def detail(req, club_id):
     club = get_object_or_404(Club, id=club_id)
