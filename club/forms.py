@@ -8,4 +8,4 @@ class MakeClubForm(forms.ModelForm):
      description = summer_fields.SummernoteTextFormField(error_messages={'required':(u'데이터를 입력해주세요'),})
      class Meta:
            model = Club
-           fields = ('name', 'description', 'title', 'location', 'period',)
+           fields = ('thumbnail_url', 'name', 'title', 'description', 'location', 'period', 'start_time', 'min_participant_num', 'max_participant_num',)

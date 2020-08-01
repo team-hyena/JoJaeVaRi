@@ -11,4 +11,4 @@ class Club(models.Model):
     period = models.IntegerField(validators=[MinValueValidator(0)])
     start_time = models.DateTimeField()
     min_participant_num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
-    max_participant_num = models.IntegerField(validators=[MinValueValidator(min_participant_num), MaxValueValidator(30)])
+    max_participant_num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(30)])
