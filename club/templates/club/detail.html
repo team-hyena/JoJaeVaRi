@@ -21,9 +21,11 @@
         <div>
             <h1>{{ club.title }}</h1>
             <article>
+                {% autoescape off %}
                 <p>{{ club.description }}</p>
                 <p>{{ club.name }}</p>
                 <p>{{ club.location }}</p>
+                {% endautoescape %}
             </article>
         </div>
         <div class="bottom_panel btn btn-primary w-100">
