@@ -27,19 +27,18 @@ def make(req):
         # club = Club(req)
         form = MakeClubForm(req.POST, req.FILES)
         
-        # print(form.is_valid())
+        print(form.is_valid())
         if form.is_valid():
             _data = form.cleaned_data
             print("asdfafs")
             print(_data['thumbnail_url'])
             club = Club(thumbnail_url=_data['thumbnail_url'], title=_data['title'], name=_data['name'], description=_data['description'], location = _data['location'], period = _data['period'], start_time = _data['start_time'], min_participant_num = _data['min_participant_num'], max_participant_num = _data['max_participant_num'])
-            
-            
             club.save()
-        return redirect('club:index')
+            return redirect('club:index')
     else:
         form = MakeClubForm()
-        return render(req, 'club/make.html', {'form': form})
+
+    return render(req, 'club/make.html', {'form': form})
 
 def detail(req, club_id):
     club = get_object_or_404(Club, id=club_id)

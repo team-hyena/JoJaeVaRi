@@ -1,10 +1,7 @@
-.box {
-  border: 1px black solid;
-}
 
 @media (max-width: 768px) {
   h1{
-      color: lightseagreen
+      color: black;
   }
   .bottom_panel {
       background-color: skyblue;
@@ -17,15 +14,15 @@
 }
 @media (min-width: 768px){
   h1 {
-      color: pink;
+      color: black;
   }
 
   .float_panel {
       float: right; 
       clear: none;
-      height: 250px;
+      /* height: 250px; */
       width: 350px;
-      margin: 0px 0.5rem;
+      margin: 0px 2rem 0.5rem 0px;
       position: sticky;
       top: 6rem;
       right: 0.5rem;
@@ -40,7 +37,7 @@
 
   .row-box {
       display: flex;
-      flex-direction: row-reverse;
+      /* flex-direction: row-reverse; */
   }
 
   .bottom_panel {
@@ -48,7 +45,29 @@
   }
 
   .div_panel {
-      background-color: skyblue;
+      /* background-color: skyblue; */
       display: block;
   }
+
+  .btn-join__bg {
+      background-color: var(--var-teal-green);
+      color: white;
+  }
+}
+
+
+.heart {
+    color: crimson;
+    font-size: 1.3rem;
+    text-align: right;
+    margin-right: 0.3rem;
+}
+
+.anonymous {
+    color: gray;
+    text-decoration: line-through;
+}
+
+.teal {
+    color: var(--var-teal-green);
 }
