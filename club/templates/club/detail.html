@@ -21,7 +21,9 @@
         <div>
             <h1>{{ club.title }}</h1>
             <article>
+                {% autoescape on %}
                 <p>{{ club.description }}</p>
+                {% endautoescape %}
                 <p>{{ club.name }}</p>
                 <p>{{ club.location }}</p>
             </article>

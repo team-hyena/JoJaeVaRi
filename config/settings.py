@@ -36,7 +36,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'default',
-    'accounts',
+    'member',
     'club',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -155,8 +155,19 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+# All Auth Settings, 
+# References:
+# - https://wikidocs.net/9942
+# - https://django-allauth.readthedocs.io/en/latest/configuration.html
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
+
+# All Auth Options
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+# AUTH_USER_MODEL = 'member.JojaevariMember' # Custom 하게 User model을 구성할 수 있다.
+ACCOUNT_SIGNUP_FORM_CLASS = 'member.forms.SignupForm' # Custom 하게 회원가입 form을 구성할 수 있다.
+SOCIALACCOUNT_AUTO_SIGNUP = False # SNS를 통해 가입 후 추가 정보를 입력받기 위한 옵션, Default: True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
