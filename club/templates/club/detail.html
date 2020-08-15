@@ -4,33 +4,104 @@
     <link rel="stylesheet" type="text/css" href="{% static 'club/detail.css' %}">
     <div class="row-box">
         <div>
-            <div class="float_panel box" style="background-color: lightgreen;">
-                <img src="{{ club.thumbnail_url}}" alt="background img"/>
+            <div class="float_panel" >
+                <h1 class="text-center">{{ club.title }}</h1>
+                
+                <img class="w-100" src="/media/{{ club.thumbnail_url}}" alt="background img"/>
                 <div class="div_panel">
                     <div>
-                        일시: {{ club.start_time }}
+                        <span class="teal font-weight-bold">일시:</span> {{ club.start_time }}
                     </div>
                     <div>
-                        장소: {{ club.location }}
+                        <span class="teal font-weight-bold">장소:</span> {{ club.location }}
                     </div>
-                    <div class="heart">하트</div>
-                    <div class="btn btn-primary w-100">1 자리 남았어요! 지금 시작</div>
+                    <div class="heart"><i class="far fa-heart"></i></div>
+                    <h4 class="anonymous">비멤버 50,000원</h4>
+                    <h2 class="font-weight-bold">멤버 30,000 <span class="teal">(40%)</span></h2>
+                    <div class="btn btn-join__bg w-100 text-center">신청하기</div>
                 </div>
             </div>
         </div>
         <div>
-            <h1>{{ club.title }}</h1>
-            <article>
+            <article class="my-5">
+                <h5 class="teal font-weight-bold">이벤트 소개</h5>
                 {% autoescape off %}
-                <p>{{ club.description }}</p>
-                <p>{{ club.name }}</p>
-                <p>{{ club.location }}</p>
+                {{ club.description }}
                 {% endautoescape %}
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h5 class="teal font-weight-bold">이런 분들께 추천드려요</h5>
+                <br>
+                <br>
+                <br>뭔가 들어가야 하는데 이것도 하드 코딩하면 안되지 싶음.
+                <br>
+                <br>
+                <br>
+                <h5 class="teal font-weight-bold">호스트</h5>
+                <p>{{ club.name }}</p>
+                <br>
+                <br>
+                <br>
+                <br>뭔가 들어가야 하는데 이것도 하드 코딩하면 안되지 싶음.
+                <br>
+                <br>
+                <br>
+                <h5 class="teal font-weight-bold">프로그램</h5>
+                <br>
+                <br>뭔가 들어가야 하는데 이것도 하드 코딩하면 안되지 싶음.
+                <hr>
+                <h5 class="teal font-weight-bold">위치</h5>
+                <br>
+                <br>
+                {{ club.location }}
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h5 class="teal font-weight-bold">공지사항</h5>
+                <h4>이벤트 신청 오픈</h4>
+                <ul>
+                    <li>8월 15일 토요일 오전 9시 30분</li>
+                </ul>
+                <h4>비멤버 및 기타 신청</h4>
+                <ul>
+                    <li>조제바리 홈페이지 회원가입 후 비멤버가로 신청하실 수 있습니다.</li>
+                    <li>무료 이벤트권 사용이 가능한 이벤트 입니다.</li>
+                </ul>
+                <h4>환불 기한</h4>
+                <ul>
+                    <li>8월 15일 토요일, 오전 9시 30분까지</li>
+                    <li>환불은 조제바리 홈페이지 '최지웅' - '지갑' 에서 하실 수 있습니다.</li>
+                    <li>모임의 참석 여부는 환불과 무관합니다.</li>
+                </ul>
+                <h4>문의</h4>
+                <ul>
+                    <li>이메일 : contact@email.com</li>
+                    <li>이벤트를 양도하신 경우, 위 메일로</li>
+                    <li>1. 이벤트 이름</li>
+                    <li>2. 양도하시는 분의 성함과 연락처</li>
+                    <li>3. 양도받으신 분의 성함과 연락처를 보내주세요.</li>
+                </ul>
+                <h4>아래 해당하시는 분은 참석이 어렵습니다.</h4>
+                <ul>
+                    <li>본인 또는 가족이 자가격리 대상자로 지정된 분</li>
+                    <li>최근 2주간 중국, 유럽, 미국 등 해외에 다녀왔거나 발열 및 인후통, 기침 등의 코로나 의심 증상이 있는 분</li>
+                    <li>최근 확진자와 접촉했거나 확진자와 접촉 가능성이 있는 분</li>
+                </ul>
+
             </article>
         </div>
+
+
         <div class="bottom_panel btn btn-primary w-100">
-            <div class="heart">하트</div>
-            <div>1 자리 남았어요! 지금 시작</div>
+            <div>신청하기</div>
         </div>
     </div>
 

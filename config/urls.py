@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import(handler404, handler500)
 
 urlpatterns = [
     path('', include('default.urls')),
@@ -27,5 +28,8 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls'))
     
 ]
+
+handler404 = 'default.views.page_not_found_page'
+handler500 = 'default.views.server_error_page'
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
