@@ -1,4 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    default index!
+  <link rel="stylesheet" type="text/css" href="{% static 'default/index.css' %}">
+  <div class="m-0 p-5 title-bg">
+    <h1 class="display-4">
+        읽고, 쓰고,<br>
+        대화하고, 친해져요.
+    </h1>
+    <br>
+    <h3 class="font-weight-bold">
+    한 달에 한 권이면 충분해요. <br>
+    '더 나은 우리'를 위한 스터디 커뮤니티,<br>
+    조제바리.<br>
+    </h3>
+  </div>
+  <div class="py-5 intro-bgcl">
+      <div class="text-center ">
+          <h2>조제바리는 <span class="teal">2</span>년동안</h2>
+          <h2><span class="teal">4</span>명의 멤버분들이</h2>
+          <h2><span class="teal">몇 개</span>의 프로젝트를 함께하고,</h2>
+          <h2>셀 수 없는 대화와,</h2>
+          <h2>가늠할 수 없는 밀도의 시간을 쌓았어요. 우와!</h2>
+          <p class="mt-5 intro-small">2020년 8월 기준</p>
+      </div>
+  </div>
+  <div>
+      <h3 class="mt-5">조제바리가 궁금하셨다면?</h3>
+  </div>
 {% endblock %}

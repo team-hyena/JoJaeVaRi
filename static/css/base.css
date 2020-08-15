@@ -7,7 +7,7 @@
 
 body{
   font-family: 'Noto Sans KR', sans-serif;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
 }
 
 .nav_home {
@@ -17,11 +17,26 @@ body{
 
 .footer_style {
   background-color: var(--var-teal-green) !important;
+  /* height: 30%; */
+  /* position: fixed; */
+  bottom: 0;
+  /* padding-left: 30px; */
+  /* padding-right: 30px; */
 }
 
 .footer_text {
   color: white;
+  font-size: .8rem;
   font-weight: bold;
+}
+
+.footer_inner {
+  margin: 20px;
+}
+
+.footer-icon {
+  margin-top: 20px;
+  font-size: 1.2rem;
 }
 
 .nav-up {
