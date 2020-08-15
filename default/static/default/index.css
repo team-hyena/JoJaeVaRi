@@ -1,0 +1,20 @@
+h1 {
+  color: black;
+}
+
+.title-bg {
+  background-image: url('https://i.pinimg.com/originals/0e/46/c1/0e46c1db3c7de6af5e4ca85fca2aaa6f.jpg');
+}
+
+.teal {
+  color: var(--var-teal-green);
+}
+
+.intro-bgcl {
+  background-color: lightgray;
+}
+
+.intro-small {
+  color: gray;
+  font-size: 0.8rem;
+}

@@ -29,8 +29,7 @@ SECRET_KEY = 'za@(v&b-n8z1@46dd$+1tv+a)c-ey-(l#b8%8(a!85ojey-wmw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 
 # Application definition
 
@@ -170,4 +169,4 @@ ACCOUNT_SIGNUP_FORM_CLASS = 'member.forms.SignupForm' # Custom 하게 회원가�
 SOCIALACCOUNT_AUTO_SIGNUP = False # SNS를 통해 가입 후 추가 정보를 입력받기 위한 옵션, Default: True
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
