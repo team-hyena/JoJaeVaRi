@@ -18,8 +18,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class ClubAdmin(admin.ModelAdmin):
     fieldsets = [
-        ("list-view", {'fields': ['thumbnail_url', 'name']}),
-        ('detail info',{'fields': ['title', 'description', 'location', 'period', 'start_time', 'min_participant_num', 'max_participant_num']})
+        ("List", {'fields': ['thumbnail_url', 'name']}),
+        ('Detail info',{'fields': ['title', 'description', 'location', 'period', 'start_time', 'min_participant_num', 'max_participant_num']}),
     ]
     list_filter = ['start_time']
     search_fields = ['name']
@@ -29,5 +29,5 @@ class ChoiceInline(admin.TabularInline):
 
 
 
-admin.site.register(Club)
+admin.site.register(Club, ClubAdmin)
 
