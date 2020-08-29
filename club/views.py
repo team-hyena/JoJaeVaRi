@@ -1,7 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Club
 from .forms import MakeClubForm
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+
+
+import json
+
 # Create your views here.
 
 def index(req):
@@ -77,3 +85,49 @@ def fake_generator(req):
         club.save()
 
     return redirect('club:index')
+
+def club_like(request, club_id):
+    print("like 함수 호출")
+    club = get_object_or_404(Club, id=club_id)  # 어떤 클럽이 눌렸는지 정보 가져 오기
+    
+    user = request.user # 현재 로그인한 유저 정보 가져 오기
+    
+    # 해당 유저가 좋아요를 누른적 있는지 확인!
+    if club.like_users.filter(id=user.id).exists(): 
+        club.like_users.remove(user)
+        liked = False
+    else:
+        club.like_users.add(user)
+        liked = True
+    
+    # js로 비동기 요청시 json 으로 return 해서 보내주면 됨.
+    context = {
+        'liked': liked,
+        'count': len(club.like_users.all())
+    }
+    return JsonResponse(context)
+
+# @login_required
+# @require_POST
+# def club_like(request, club_id):
+#     print(club_id)
+#     if request.method == 'POST':
+#         user = request.user
+#         # slug = request.POST.get('slug', None)
+#         club = get_object_or_404(Club, pk=club_id)
+
+#         if club.like_users.filter(id=user.id).exists():
+#             # user has already liked this club
+#             # remove like/user
+#             club.like_users.remove(user)
+#             message = 'You disliked this'
+#         else:
+#             # add a new like for a company
+#             club.like_users.add(user)
+#             message = 'You liked this'
+
+#     ctx = {'likes_count': club.like_users, 'message': message}
+#     # use mimetype instead of content_type if django < 5
+#     # return HttpResponse(json.dumps(ctx), content_type='application/json')
+#     return JsonResponse(ctx)
+

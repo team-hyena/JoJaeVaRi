@@ -24,5 +24,10 @@
                 {% endautoescape %}
             </p>
         </div>
+        <div class="like_count_{{club.id}}">
+            좋아요 {{ club.like_users.all|length }}명
+            
+        </div>
     </div>
 </div>
+

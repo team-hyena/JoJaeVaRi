@@ -14,8 +14,8 @@ class Profile(models.Model):
 
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-    via_sns_type = models.IntegerField()
-    via_sns_name = models.CharField(max_length=15)
+    via_sns_type = models.IntegerField(null=True)
+    via_sns_name = models.CharField(max_length=15,null=True)
 
     # auth optional
     age = models.IntegerField()

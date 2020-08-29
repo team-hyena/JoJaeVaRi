@@ -7,5 +7,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('make/', views.make, name='make'),
     path('<int:club_id>/', views.detail, name='detail'),
-    path('generator/', views.fake_generator, name='generator')
+    path('generator/', views.fake_generator, name='generator'),
+    path('like/<club_id>/', views.club_like, name='club_like')
 ]

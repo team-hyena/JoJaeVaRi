@@ -59,13 +59,30 @@ var hearts = document.querySelectorAll('.badge-heart');
 
 hearts.forEach(function(o, i) {
   o.addEventListener('click', function(event) {
+    console.log("click_event_base.js")
     var filled = this.getAttribute("data-filled") === "true";
     var filled_id = this.getAttribute("data-filled-id");
     var another = document.querySelector('[data-filled-id="'+filled_id+'"][data-filled="'+(!filled)+'"]');
-
+    var pk = $(this).attr('name')
+        $.ajax({ // ajax로 서버와 통신
+            type: "POST", // 데이터를 전송하는 방법
+            url: `like/${filled_id}/`, // 통신할 url을 지정
+            data: { 'pk': pk, 'csrfmiddlewaretoken': csrftoken }, // 서버로 데이터 전송시 옵션, pk를 넘겨야 어떤 video인지 알 수 있음
+            dataType: "json",
+            success: function (response) { // 성공
+                // alert(response.message);
+                console.log("성공")
+                console.log(response.count)
+                console.log(filled_id)
+                $(`.like_count_${filled_id}`).text("좋아요 " + response.count + "명"); // 좋아요 개수 변경
+            },
+            error: function (request, status, error) { // 실패
+                console.log("로그인이 필요합니다.")
+                // window.location.replace("/") // 로그인 페이지로 넘어가기
+            },
+        });
     this.style.display = "none";
     another.style.display="block";
     event.preventDefault();
   });
 });
-

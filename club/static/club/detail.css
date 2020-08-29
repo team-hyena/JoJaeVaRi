@@ -57,11 +57,13 @@
 
 
 .heart {
-    color: crimson;
+    color:crimson;
     font-size: 1.3rem;
     text-align: right;
     margin-right: 0.3rem;
+    cursor: pointer;
 }
+
 
 .anonymous {
     color: gray;
