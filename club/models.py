@@ -12,3 +12,6 @@ class Club(models.Model):
     start_time = models.DateTimeField()
     min_participant_num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
     max_participant_num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(30)])
+
+    def __str__(self):
+        return f"{self.thumbnail_url}, {self.name}, {self.title}, {self.description}, {self.location}, {self.period}, {self.start_time}, {self.min_participant_num}, {self.max_participant_num}"
