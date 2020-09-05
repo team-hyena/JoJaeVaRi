@@ -162,7 +162,7 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
 # All Auth Options
-# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 # AUTH_USER_MODEL = 'member.JojaevariMember' # Custom 하게 User model을 구성할 수 있다.
 # ACCOUNT_FORMS = { # 커스텀 폼
