@@ -162,7 +162,7 @@ AUTHENTICATION_BACKENDS = (
 # References:
 # - https://wikidocs.net/9942
 # - https://django-allauth.readthedocs.io/en/latest/configuration.html
-SITE_ID = 2
+SITE_ID = 1
 # SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True

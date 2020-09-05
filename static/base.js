@@ -55,8 +55,8 @@ window.onscroll = function (e) {
 // }
 
 var $cardContainer = $(".card-container");
+let hearts = document.querySelectorAll(".badge-heart")
 
-<<<<<<< HEAD:static/base.js
 hearts.forEach(function(o, i) {
   o.addEventListener('click', function(event) {
     console.log("click_event_base.js")
@@ -86,7 +86,7 @@ hearts.forEach(function(o, i) {
     event.preventDefault();
   });
 });
-=======
+
 $cardContainer.on("click", ".badge-heart", function(event) {
   var filled = this.getAttribute("data-filled") === "true";
   var filled_id = this.getAttribute("data-filled-id");
@@ -161,4 +161,3 @@ $("#get-button").on("click", function () {
       });
   }
 });
->>>>>>> master:static/js/base.js

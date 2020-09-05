@@ -19,6 +19,7 @@ class MakeClubForm(forms.ModelForm):
     description = summer_fields.SummernoteTextFormField(error_messages={'required':(u'데이터를 입력해주세요'),})
     # start_time = forms.SplitDateTimeField(widget=MultiWidget(widgets=[CustomDateInput, CustomTimeInput]))
     # start_time = forms.SplitDateTimeField(widget=CustomDateTimeInput)
+    start_time = forms.DateTimeField(widget=CustomDateTimeInput, input_formats=["%Y-%m-%dT%H:%M", "%Y-%m-%d %H:%M"])
     thumbnail_url = forms.FileField(label="Thumbnail", widget=forms.FileInput(attrs={"class": "custom-file-input", 
                     "aria-describedby": "inputGroupFileAddon01",}))
     class Meta:
