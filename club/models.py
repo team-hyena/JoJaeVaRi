@@ -12,3 +12,7 @@ class Club(models.Model):
     start_time = models.DateTimeField()
     min_participant_num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
     max_participant_num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(30)])
+
+    def __str__(self):
+        return self.title
+    

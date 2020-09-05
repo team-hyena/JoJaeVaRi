@@ -1,0 +1,14 @@
+#id_title, #id_location,
+#id_period, #id_max_participant_num {
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+#id_start_time, #id_min_participant_num {
+  width: 95%;
+  padding: 0.5rem 1rem;
+}
+
+label {
+  font-weight: bold;
+}

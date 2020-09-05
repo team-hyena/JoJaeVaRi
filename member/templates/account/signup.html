@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'member/form.css' %}">
+  <div class="container mb-5">
+    <h1>{% trans "Sign Up" %}</h1>
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+          {% csrf_token %}
+          
+          {% for field in form %}
+
+            {% if field.html_name not in 'gender, age' %}
+              <div class="fieldWrapper m-2">
+                {{ field.label_tag }} <br> {{ field }}
+                {% for error in field.errors %}
+                <p class="text-danger"> {{ error }} </p>
+                {% endfor %}
+              </div>
+            {% elif field.html_name == 'gender' %}
+              <div class="d-flex justify-content-between w-100 m-2">
+                {{ field.label_tag }}
+                <div class="w-50 d-flex justify-content-evenly">
+                  {% for radio in field %}
+                    {{ radio }} 
+                  {% endfor %}
+                </div>
+              </div>
+            {% else %}
+              <div class="d-flex justify-content-between m-2">
+                {{ field.label_tag }}{{ field }}
+              </div>
+            {% endif %}
+            
+          {% endfor %}
+    
+          
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <div class="d-flex mt-5">
+            <a href="/account/login/" class="w-25 btn btn-secondary btn-lg">{% trans "Sign In" %}</a>
+            <button type="submit" class="btn btn-success btn-lg w-100">{% trans "Sign Up" %}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
