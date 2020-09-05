@@ -170,3 +170,5 @@ SOCIALACCOUNT_AUTO_SIGNUP = False # SNS를 통해 가입 후 추가 정보를 �
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+PAGINATE_SIZE = 10

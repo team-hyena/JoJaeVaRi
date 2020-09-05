@@ -7,7 +7,6 @@ from .forms import MakeClubForm
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
-
 import json
 
 # Create your views here.
@@ -60,7 +59,6 @@ def detail(req, club_id):
 from faker import Faker
 from faker.providers import internet
 
-from datetime import datetime
 from django.utils import timezone
 
 def fake_generator(req):
@@ -106,6 +104,9 @@ def club_like(request, club_id):
         'count': len(club.like_users.all())
     }
     return JsonResponse(context)
+
+
+
 
 # @login_required
 # @require_POST
