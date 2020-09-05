@@ -131,12 +131,43 @@ Extra large devices (large laptops and desktops, 1200px and up)
   cursor: pointer;
 }
 
+.card .card__title a {
+  color: var(--var-teal-green);
+  text-decoration: none;
+}
+
 .card .card__title h1 {
   font-weight: 700;
   font-size: 24px;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: hidden;  
   text-overflow: ellipsis;
 }
 
 /* card end */
+
+/* button start */
+.button-wrapper {
+ margin: 0 auto;
+ text-align: center;
+}
+
+.button {
+  padding: 15px;
+  border: 3px solid teal;
+  max-width: 300px;
+  width: 100%;
+  margin: 15px 0 30px;
+  background: #ffffff;
+  color: teal;
+  font-weight: bold;
+  box-shadow: 4px 4px #b3a9a9;
+  letter-spacing: 5px;
+}
+
+.button[disabled] {
+  filter: grayscale(1);
+  cursor: not-allowed;
+}
+
+/* button end */

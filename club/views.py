@@ -26,8 +26,8 @@ def index(req):
         'club_list': club_list,
     }
 
-    for club in club_list:
-        print(club)
+    # for club in club_list:
+    #     print(club)
 
     return render(req, 'club/index.html', context)
 
