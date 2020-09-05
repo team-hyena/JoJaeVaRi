@@ -51,8 +51,12 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    # Included the providers
     'allauth.socialaccount.providers.naver',
+    'allauth.socialaccount.providers.kakao',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
 ]
 
 MIDDLEWARE = [
@@ -158,13 +162,24 @@ AUTHENTICATION_BACKENDS = (
 # References:
 # - https://wikidocs.net/9942
 # - https://django-allauth.readthedocs.io/en/latest/configuration.html
-SITE_ID = 1
+SITE_ID = 2
+# SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 LOGIN_REDIRECT_URL = '/'
+ACCOUNT_AUTHENTICATED_LOGOUT_REDIRECTS = True
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 # All Auth Options
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_REQUIRED = True
 # AUTH_USER_MODEL = 'member.JojaevariMember' # Custom 하게 User model을 구성할 수 있다.
+# ACCOUNT_FORMS = { # 커스텀 폼
+    # 'login': 'member.forms.MyCustomLoginForm',
+    # 'signup': 'member.forms.SignupForm',
+# }
+ACCOUNT_LOGOUT_ON_GET = True # Logout 바로 하기
 ACCOUNT_SIGNUP_FORM_CLASS = 'member.forms.SignupForm' # Custom 하게 회원가입 form을 구성할 수 있다.
 SOCIALACCOUNT_AUTO_SIGNUP = False # SNS를 통해 가입 후 추가 정보를 입력받기 위한 옵션, Default: True
 

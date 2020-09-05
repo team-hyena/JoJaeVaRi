@@ -21,4 +21,4 @@ class Club(models.Model):
     club_like_count.short_description = 'club like count'
 
     def __str__(self):
-        return self.name
+        return f"{self.thumbnail_url}, {self.name}, {self.title}, {self.description}, {self.location}, {self.period}, {self.start_time}, {self.min_participant_num}, {self.max_participant_num}"

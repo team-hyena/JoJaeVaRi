@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load socialaccount %}
+
+{% block head_title %}OpenID Sign In{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'member/form.css' %}">
+
+
+<div class="container">
+  <h1>{% trans 'OpenID Sign In' %}</h1>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <form id="openid_login_form" class="openid_login" method="post" action="#">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        {% for field in form %}
+          {% if field.html_name != 'remember' %}
+            <div class="fieldWrapper">
+              {{ field.label_tag }} <br> {{ field }}
+              {% for error in field.errors %}
+              <p class="text-danger"> {{ error }} </p>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="id-save">
+              {{ field.label_tag }} {{ field }}
+            </div>
+          {% endif %}
+        {% endfor %}
+        <br>
+        <div class="d-flex">
+          <a href="/account/signup/" class="w-25 btn btn-secondary btn-lg">{% trans "Sign Up" %}</a>
+          <button type="submit" class="btn btn-primary btn-lg w-75">{% trans "Sign In" %}</button>
+        </div>
+      </form>
+      <ul class="socialaccount_providers">
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+      </ul>
+    </div>
+  </div>
+  
+
+</div>
+
+{% endblock %}
