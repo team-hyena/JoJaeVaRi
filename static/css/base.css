@@ -17,9 +17,11 @@ body{
 
 .footer_style {
   background-color: var(--var-teal-green) !important;
-  /* height: 30%; */
-  /* position: fixed; */
-  bottom: 0;
+  height: 30vh;
+  /* position: sticky; */
+  /* position: absolute; */
+  /* width: 80%; */
+  /* bottom: 0; */
   /* padding-left: 30px; */
   /* padding-right: 30px; */
 }

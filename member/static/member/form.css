@@ -1,0 +1,23 @@
+/* h1 {
+  color: pink;
+} */
+
+label {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#id_login, #id_password {
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+#id_email, #id_username, #id_password1, #id_password2 {
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+#id_age {
+  width: 50%;
+  padding: 0.5rem 1rem;
+}
