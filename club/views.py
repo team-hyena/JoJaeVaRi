@@ -1,26 +1,63 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, JsonResponse
+
+from django.conf import settings
 
 from .models import Club
 from .forms import MakeClubForm
+
 # Create your views here.
 
 def index(req):
-    club = Club.objects.all()
+    # club_list = Club.objects.all()
 
-    # club_list = []
+    # # club_list = []
 
-    # for club_item in club:
-    #     club_list.append({
-    #         'thumbnail_url': club_item.thumbnail_url,
-    #         'title': club_item.title,
-    #         'description': club_item.description,
-    #     })
+    # # for club_item in club:
+    # #     club_list.append({
+    # #         'thumbnail_url': club_item.thumbnail_url,
+    # #         'title': club_item.title,
+    # #         'description': club_item.description,
+    # #     })
+    club_list_partial = Club.objects.all()[0:10] # Club.objects.filter(id__in=[start, end]) # Club.objects.all()
+    club_list = list(club_list_partial.values())
 
     context = {
-        'club_list': club,
+        'club_list': club_list,
     }
 
+    # for club in club_list:
+    #     print(club)
+
     return render(req, 'club/index.html', context)
+
+def inf_scroll1(req):
+    # print(req.GET['start'], req.GET['start'] + req.GET['count'])
+    start = int(req.GET['start'])
+    count = int(req.GET['count'])
+    
+    db_count = Club.objects.count()
+
+    if db_count < count:
+        count = db_count
+
+    end = start + count
+
+    # club_list_partial = Club.objects.all()
+    # club_list_partial = Club.objects.filter(id__in=range(start, end))
+    club_list_partial = Club.objects.filter(id__range=[start, end])
+    club_list = list(club_list_partial.values())
+    
+    return JsonResponse({'club_list': club_list}, safe=False)
+
+def inf_scroll2(req):
+    paginate = int(req.GET['paginate'])
+    start = (paginate-1) * settings.PAGINATE_SIZE
+    end = paginate * settings.PAGINATE_SIZE
+    club_list_partial = Club.objects.all()[start:end] # Club.objects.filter(id__in=[start, end]) # Club.objects.all()
+    club_list = list(club_list_partial.values())
+    
+    return JsonResponse({'club_list': club_list}, safe=False)
 
 def make(req):
     if req.method == 'POST':

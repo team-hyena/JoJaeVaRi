@@ -1,18 +1,17 @@
-const header = document.querySelector('.wheel_move')
+const header = document.querySelector(".wheel_move");
 
 window.onscroll = function (e) {
-  if (this.oldScroll > this.scrollY){
+  if (this.oldScroll > this.scrollY) {
     // console.log('up')
-    header.classList.add('nav-down')
-    header.classList.remove('nav-up')
-  }else {
+    header.classList.add("nav-down");
+    header.classList.remove("nav-up");
+  } else {
     // console.log('down')
-    header.classList.add('nav-up')
-    header.classList.remove('nav-down')
+    header.classList.add("nav-up");
+    header.classList.remove("nav-down");
   }
   this.oldScroll = this.scrollY;
-}
-
+};
 
 // var io = new IntersectionObserver((entries, observer) => {
 //   entries.forEach(entry => {
@@ -24,7 +23,7 @@ window.onscroll = function (e) {
 //       //observer.unobserve(entry.target);
 //       infinityScroll();
 //       observer.unobserve(entry.target);
-      
+
 //     }
 //   })
 // }, {});
@@ -55,17 +54,79 @@ window.onscroll = function (e) {
 //     io.observe(document.querySelector('.card:last-child'));
 // }
 
-var hearts = document.querySelectorAll('.badge-heart');
+var $cardContainer = $(".card-container");
 
-hearts.forEach(function(o, i) {
-  o.addEventListener('click', function(event) {
-    var filled = this.getAttribute("data-filled") === "true";
-    var filled_id = this.getAttribute("data-filled-id");
-    var another = document.querySelector('[data-filled-id="'+filled_id+'"][data-filled="'+(!filled)+'"]');
+$cardContainer.on("click", ".badge-heart", function(event) {
+  var filled = this.getAttribute("data-filled") === "true";
+  var filled_id = this.getAttribute("data-filled-id");
+  var another = document.querySelector(
+    '[data-filled-id="' + filled_id + '"][data-filled="' + !filled + '"]'
+  );
 
-    this.style.display = "none";
-    another.style.display="block";
-    event.preventDefault();
-  });
+  this.style.display = "none";
+  another.style.display = "block";
+  event.preventDefault();
 });
 
+var index = 1;
+var flag = true;
+
+$("#get-button").on("click", function () {
+  var self = this;
+
+  if (flag) {
+    flag = false;
+
+    $.ajax({
+      url: "/club/items2/?paginate=" + ++index,
+      type: "GET",
+      dataType: "json",
+    })
+      .done(function (response) {
+        // 성공 시 동작
+          var render = "";
+
+          if(response.club_list.length) {
+            response.club_list.forEach(function(o) {
+              render +=  '<div class = "card">' +
+              '<div class = "card__image">' +
+              '<img src="' + o.thumbnail_url + '" alt="이미지가 없어용!!"/>' +
+              '<div class = "card__badge card__badge--round">' +
+              '<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart badge-heart" data-filled="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:block;" data-filled-id="'+o.id+'">' +
+              '<path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>' +
+              "</svg>" +
+              '<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart-fill badge-heart" data-filled="true" fill="#ff7777" xmlns="http://www.w3.org/2000/svg" style="display: none;" data-filled-id="'+o.id +'" >' +
+              '<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>' +
+              "</svg>" +
+              "</div>" +
+              "</div>" +
+              '<div class="card__content">' +
+              '<div class="card__title">' +
+              '<a href="/club/'+o.id+'"><h1>'+ o.title +'</h1></a>' +
+              '</div>' +
+              '<div class="card__description">' +
+              "<p>" +
+              o.description + 
+              "</p>" +
+              "</div>" +
+              "</div>" +
+              "</div>";
+            }); // end foreach
+
+
+            $cardContainer.append(render);
+          } else {
+        
+            self.setAttribute("disabled", true);
+          }
+      })
+      .fail(function (error) {
+        // 실패 시 동작
+        console.error(error);
+      })
+      .always(function (response) {
+        console.log("always");
+        flag = true;
+      });
+  }
+});
