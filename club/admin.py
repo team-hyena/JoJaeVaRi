@@ -17,12 +17,20 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 #     max_participant_num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(30)])
 
 class ClubAdmin(admin.ModelAdmin):
+    def club_like_count(self, obj):
+        return obj.like_users.count()
+    club_like_count.short_description = 'club like count'
+    list_display = ['title', 'club_like_count']
+
     fieldsets = [
         ("List", {'fields': ['thumbnail_url', 'name']}),
         ('Detail info',{'fields': ['title', 'description', 'location', 'period', 'start_time', 'min_participant_num', 'max_participant_num']}),
     ]
     list_filter = ['start_time']
     search_fields = ['name']
+    
+    
+
 
 class ChoiceInline(admin.TabularInline):
     model = Club

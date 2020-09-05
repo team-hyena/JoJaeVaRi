@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
 
@@ -12,6 +13,12 @@ class Club(models.Model):
     start_time = models.DateTimeField()
     min_participant_num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
     max_participant_num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(30)])
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_clubs", blank=True)
+
+   
+    def club_like_count(self, obj):
+        return obj.count_like_users
+    club_like_count.short_description = 'club like count'
 
     def __str__(self):
         return f"{self.thumbnail_url}, {self.name}, {self.title}, {self.description}, {self.location}, {self.period}, {self.start_time}, {self.min_participant_num}, {self.max_participant_num}"
