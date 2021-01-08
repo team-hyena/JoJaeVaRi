@@ -1,6 +1,8 @@
 # JoJaeVaRi
-Django + Vanillia Javascript + Html + CSS
-독서 모임 사이트인 Travari의 클론 코딩
+독서 모임 사이트인 Trevari의 클론 코딩
+사용 스택: Django + Vanillia Javascript + Html + CSS
+
+
 
 
 
