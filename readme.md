@@ -1,3 +1,13 @@
+# JoJaeVaRi
+Django + Vanillia Javascript + Html + CSS
+독서 모임 사이트인 Travari의 클론 코딩
+
+
+
+
+
+
+
 ## 개인 가상환경 설정
 
 python -m venv venv 
